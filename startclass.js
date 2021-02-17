@@ -3,12 +3,16 @@ const TARGETCLASS = "S3SY"
 const IGNORED_SUBJECTS = ['c_english']
 
 
-const WebSocket = require('ws');
+const WebSocket = require('ws-reconnect');
 const open = require('open');
 const sound = require("sound-play");
 
-const ws = new WebSocket(ALERT_SERVER_URL);
+const ws = new WebSocket(ALERT_SERVER_URL, {
+    retryCount:99999999, 
+    reconnectInterval: 1 
+});
 
+ws.start()
 ws.on('open', function open() {
   ws.send('connected');
 });
