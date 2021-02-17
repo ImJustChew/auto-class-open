@@ -1,20 +1,24 @@
+const ALERT_SERVER_URL = 'wss://ResponsibleAwkwardScript.chewtzi.repl.co/ws'
+const TARGETCLASS = "S3SY"
+const IGNORED_SUBJECTS = ['c_english']
+
+
 const WebSocket = require('ws');
 const open = require('open');
-
-const ws = new WebSocket('wss://ResponsibleAwkwardScript.chewtzi.repl.co/ws');
 const sound = require("sound-play");
 
-ws.on('open', function open() {
-  ws.send('chew connect');
-});
+const ws = new WebSocket(ALERT_SERVER_URL);
 
+ws.on('open', function open() {
+  ws.send('connected');
+});
 
 ws.on('message', function incoming(data) {
   console.log(data);
   if(data){
     let { "class":className, subject, url } = JSON.parse(data)
-    if(className != 'S3SY')return;
-    if(subject == 'c_english'){
+    if(className != TARGETCLASS)return;
+    if(IGNORED_SUBJECTS.includes(subject)){
         console.log('human interaction required')
         console.log(url)
         return;
