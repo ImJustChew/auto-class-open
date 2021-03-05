@@ -1,4 +1,4 @@
-const ALERT_SERVER_URL = 'wss://ResponsibleAwkwardScript.chewtzi.repl.co/ws'
+const ALERT_SERVER_URL = 'wss://classlinkbot.chewtzi.repl.co/ws'
 const TARGETCLASS = "S3SY"
 const IGNORED_SUBJECTS = ['c_english']
 
