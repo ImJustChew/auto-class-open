@@ -12,6 +12,8 @@ const ws = new WebSocket(ALERT_SERVER_URL, {
     reconnectInterval: 1 
 });
 
+const schoolemail = 's16095@clphs.edu.my';
+
 ws.start()
 ws.on('open', function open() {
   ws.send('connected');
@@ -30,7 +32,7 @@ ws.on('message', function incoming(data) {
     console.log('NOW IS '+subject)
     console.log(`opening link ${url} in 9 minutes`)
     setTimeout(()=> {          
-        open(url, {app: 'msedge'})
+        open(url.includes('meet.google.com')?(url+'?authuser='+schoolemail):url, {app: 'msedge'})
         sound.play("notification-sound.mp3");
     },8*60*1000);
   }
