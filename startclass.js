@@ -32,6 +32,6 @@ ws.on('message', function incoming(data) {
     setTimeout(()=> {          
         open(url, {app: 'msedge'})
         sound.play("notification-sound.mp3");
-    },9*60*1000);
+    },8*60*1000);
   }
 });
